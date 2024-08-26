@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Subnav from "./Subnav";
 import Momentdisplay from "./Momentdisplay";
+import Navlogo from "./Navlogo";
 
 
 const Navbar = () => {
@@ -35,7 +36,8 @@ return (
                         {navlinks}
                 </ul>
             </div>
-            <a className="btn btn-ghost text-xl font-bungee_Tint border border-solid border-red-800 mx-1">ProdX</a>
+            {/* <a className="btn btn-ghost text-xl font-bungee_Tint border border-solid border-red-800 mx-1">ProdX</a> */}
+            <Navlogo></Navlogo> 
             <Momentdisplay></Momentdisplay>
         </div>
         <div className="navbar-center hidden lg:flex">
