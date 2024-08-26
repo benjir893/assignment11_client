@@ -1,0 +1,74 @@
+[
+    {
+        "ProductImage": "https://i.ibb.co/fvkcw1t/denimjacket.jpg",
+        "QueryTitle": "Request for size adjustment",
+        "ProductName": "Denim Jacket",
+        "BrandName": "Levi's",
+        "AlternationReason": "Size is too tight",
+        "DatePosted": "2024-08-20",
+        "UserInfo": {
+            "name": "Sophia Martinez",
+            "image": "https://i.ibb.co/L8Cy1cT/profile-thumbnail01.jpg"
+        }
+    },
+    {
+        "ProductImage": "https://i.ibb.co/8cVZYKQ/V-Neck-Sweater.jpg",
+        "QueryTitle": "Color difference in product",
+        "ProductName": "V-Neck Sweater",
+        "BrandName": "GAP",
+        "AlternationReason": "Color appears faded",
+        "DatePosted": "2024-08-21",
+        "UserInfo": {
+            "name": "Liam Wilson",
+            "image": "https://i.ibb.co/7NYFhNZ/profile-thumbnail03.jpg"
+        }
+    },
+    {
+        "ProductImage": "https://i.ibb.co/tM3hVd6/High-Heels.jpg",
+        "QueryTitle": "Broken heel on delivery",
+        "ProductName": "High Heels",
+        "BrandName": "Gucci",
+        "AlternationReason": "Heel was broken",
+        "DatePosted": "2024-08-22",
+        "UserInfo": {
+            "name": "Emma Thompson",
+            "image": "https://i.ibb.co/L8Cy1cT/profile-thumbnail01.jpg"
+        }
+    },
+    {
+        "ProductImage": "https://i.ibb.co/J7yKmDf/Winter-Coat.jpg",
+        "QueryTitle": "Request for new stitching",
+        "ProductName": "Winter Coat",
+        "BrandName": "North Face",
+        "AlternationReason": "Stitching came undone",
+        "DatePosted": "2024-08-23",
+        "UserInfo": {
+            "name": "James Lee",
+            "image": "https://i.ibb.co/XZf111P/profile-thumbnail02.jpg"
+        }
+    },
+    {
+        "ProductImage": "https://i.ibb.co/8x3kPgN/shoe.jpg",
+        "QueryTitle": "Size mismatch on delivery",
+        "ProductName": "Running Shoes",
+        "BrandName": "Adidas",
+        "AlternationReason": "Size too large",
+        "DatePosted": "2024-08-24",
+        "UserInfo": {
+            "name": "Olivia Garcia",
+            "image": "https://i.ibb.co/L8Cy1cT/profile-thumbnail01.jpg"
+        }
+    },
+    {
+        "ProductImage": "https://i.ibb.co/4J7MvvM/Travel-Bag.jpg",
+        "QueryTitle": "Faulty zipper on arrival",
+        "ProductName": "Travel Bag",
+        "BrandName": "Samsonite",
+        "AlternationReason": "Zipper not working",
+        "DatePosted": "2024-08-25",
+        "UserInfo": {
+            "name": "Noah Anderson",
+            "image": "https://i.ibb.co/XZf111P/profile-thumbnail02.jpg"
+        }
+    }
+]
