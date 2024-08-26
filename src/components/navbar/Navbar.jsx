@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Subnav from "./Subnav";
 import Momentdisplay from "./Momentdisplay";
 import Navlogo from "./Navlogo";
+import { useContext } from "react";
+import { Authcontext } from "../../services/AuthProvider";
 
 
 const Navbar = () => {
+    const { user,logOutUser} = useContext(Authcontext);
+    const navigate = useNavigate()
     const navlinks = [
         <li><Link>HOME</Link></li>,
         <li><Link>QUERIES</Link></li>,
@@ -12,6 +16,18 @@ const Navbar = () => {
         <li><Link>MY QUERIES</Link></li>,
         <li><Link>MY RECOMMENDATION</Link></li>
 ]
+
+const handleLogout=()=>{
+    logOutUser()
+    .then(()=>{
+        console.log('user logged out')
+        navigate('/login')
+    })
+    .catch(error =>{
+        console.error(error)
+
+    })
+}
 return (
     <div className="navbar bg-orange-200">
         <div className="navbar-start">
@@ -32,7 +48,7 @@ return (
                 </div>
                 <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-blue-700">
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow font-semibold text-blue-700">
                         {navlinks}
                 </ul>
             </div>
@@ -41,13 +57,19 @@ return (
             <Momentdisplay></Momentdisplay>
         </div>
         <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 text-blue-700">
+            <ul className="menu menu-horizontal px-1 font-semibold text-blue-700">
                 {navlinks}
             </ul>
         </div>
         <div className="navbar-end">
             <Subnav></Subnav>
-            <a className="btn text-orange-600">LOG OUT</a>
+            {
+                user ?<>
+                <button onClick={handleLogout} className="btn text-orange-600">LOG OUT</button></>:<>
+                <Link to={'/login'}><button className="btn text-orange-600">LOG IN</button></Link>
+                </>
+            }
+            
         </div>
     </div>
 );
