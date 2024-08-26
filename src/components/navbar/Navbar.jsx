@@ -29,7 +29,7 @@ const handleLogout=()=>{
     })
 }
 return (
-    <div className="navbar bg-orange-200">
+    <div className="navbar bg-emerald-200">
         <div className="navbar-start">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -65,8 +65,8 @@ return (
             <Subnav></Subnav>
             {
                 user ?<>
-                <button onClick={handleLogout} className="btn text-orange-600">LOG OUT</button></>:<>
-                <Link to={'/login'}><button className="btn text-orange-600">LOG IN</button></Link>
+                <button onClick={handleLogout} className="btn bg-emerald-200 text-blue-600">LOG OUT</button></>:<>
+                <Link to={'/login'}><button className="btn bg-emerald-200 text-blue-600">LOG IN</button></Link>
                 </>
             }
             
