@@ -1,9 +1,65 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navlogo from "../../navbar/Navlogo";
+import { HelmetProvider } from "react-helmet-async";
+import { useContext } from "react";
+import Swal from "sweetalert2";
+import { Authcontext } from "../../../services/AuthProvider";
 
 
 const Register = () => {
+    const { user, createNewUser } = useContext(Authcontext);
+    const navigate = useNavigate();
+    const location = useLocation()
+
+    const handleRegistration = (e) => {
+        e.preventDefault();
+        // const form = new FormData(e.currentTarget)
+        // const name = form.get('name');
+        // const email = form.get('email');
+        // const password = form.get('password');
+        // const confirmPassword = form.get('confirmPassword');
+        // const user = {name, email, password, confirmPassword}
+        // console.log(user)
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+        const loggeduser = { name, email, password, confirmPassword };
+        console.log(loggeduser)
+        if (password < 6) {
+            Swal.fire('password must be minimum six digits')
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            Swal.fire("missing at least one upper case latter");
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            Swal.fire("missing at least one lower case latter");
+            return;
+        } else if (!/\d/.test(password)) {
+            Swal.fire("Missing at least one number");
+            return;
+        }
+        else if (password !== confirmPassword) {
+            Swal.fire("confiremed password does not match");
+            return;
+        }
+        createNewUser(email, password)
+            .then(userCredential => {
+                const user = userCredential.user;
+                console.log(user)
+                Swal.fire("you registered successfully. Thank you!");
+                navigate(location?.state ? location?.state : '/');
+            })
+            .catch(err => {
+                console.error(err);
+            })
+
+    }
     return (
+
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
@@ -12,7 +68,7 @@ const Register = () => {
                     <div className="ml-24 mt-5">
                         <Navlogo></Navlogo>
                     </div>
-                    <form className="card-body">
+                    <form onSubmit={handleRegistration} className="card-body">
                         <div className="form-control">
 
                             <input type="text" placeholder="your name" name="name" className="input input-bordered" required />
@@ -41,6 +97,7 @@ const Register = () => {
                 </div>
             </div>
         </div>
+
     );
 };
 

@@ -13,7 +13,7 @@ const PrivateRouters = ({ children }) => {
             <span className="loading loading-bars loading-md"></span>
             <span className="loading loading-bars loading-lg"></span></>
     }
-    if(user){
+    if(user?.email){
         return children;
     }
     return <Navigate state={location.pathname} to={'/login'} replace></Navigate>

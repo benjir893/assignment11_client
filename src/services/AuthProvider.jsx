@@ -19,11 +19,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
-    const logOutUser = () => {
-        setLoading(true);
-        return signOut(auth);
-    }
-
+    
     const googleLogin = () => {
         setLoading(true)
         return signInWithPopup(auth, googleProvider)
@@ -32,6 +28,10 @@ const AuthProvider = ({ children }) => {
     const githubLogin = () => {
         setLoading(true)
         return signInWithPopup(auth, githubProvider);
+    }
+    const logOutUser = () => {
+        setLoading(true);
+        return signOut(auth);
     }
 
     useEffect(() => {
