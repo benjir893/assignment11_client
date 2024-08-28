@@ -11,7 +11,11 @@ const Login = () => {
     const location = useLocation();
 
     const handleLoginWithEmailandPassword=e=>{
-        
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const user = {email, password}
     }
 
     const handleGoogleLogin = e=>{
@@ -56,7 +60,7 @@ const Login = () => {
 
                             <div className="form-control">
 
-                                <input type="password" placeholder=" password" name="Password" className="input input-bordered" required />
+                                <input type="password" placeholder=" password" name="password" className="input input-bordered" required />
                                 <label className="label">
                                     <Link to={'/register'} className="text-black">Yet to<span className="label-text-alt link link-hover text-blue-800 font-semibold text-xl"> register</span> ?</Link>
                                     {/* <a href="#" className="label-text-alt link link-hover">Yet to register?</a> */}
