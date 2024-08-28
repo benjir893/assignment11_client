@@ -10,7 +10,9 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    
+    const handleLoginWithEmailandPassword=e=>{
+        
+    }
 
     const handleGoogleLogin = e=>{
         e.preventDefault();
@@ -45,7 +47,7 @@ const Login = () => {
                         <div className="ml-24 mt-5">
                             <Navlogo></Navlogo>
                         </div>
-                        <form className="card-body">
+                        <form onSubmit={handleLoginWithEmailandPassword} className="card-body">
 
                             <div className="form-control">
 
