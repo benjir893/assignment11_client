@@ -6,38 +6,51 @@ import { Authcontext } from "../../../../services/AuthProvider";
 
 
 const Login = () => {
-    const{user, googleLogin, githubLogin} = useContext(Authcontext);
+    const { user, loginUser, googleLogin, githubLogin } = useContext(Authcontext);
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleLoginWithEmailandPassword=e=>{
+    const handleLoginWithEmailandPassword = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const user = {email, password}
+        const user = { email, password }
+        console.log({ user })
+
+        loginUser(email, password)
+            .then(useCredential => {
+                console.log(useCredential.user)
+                navigate(location?.state ? location?.state : '/')
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }
 
-    const handleGoogleLogin = e=>{
+    const handleGoogleLogin = e => {
         e.preventDefault();
         googleLogin()
-        .then(userCredential =>{
-            const user = userCredential.user;
-            console.log(user)
-            navigate(location?.state ? location?.state : '/')
-        })
-        .then(err=>{
-            console.error(err)
-        })
-       
+            .then(userCredential => {
+                const user = userCredential.user;
+                console.log(user)
+                navigate(location?.state ? location?.state : '/')
+            })
+            .catch(err => {
+                console.error(err)
+            })
+
     }
-    const handleGithubLogin = e =>{
+    const handleGithubLogin = e => {
         e.preventDefault();
         githubLogin()
-        .then(userCredential =>{
-            console.log(userCredential.user);
-            navigate(location?.state ? location?.state : '/')
-        })
+            .then(userCredential => {
+                console.log(userCredential.user);
+                navigate(location?.state ? location?.state : '/')
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }
     return (
         <HelmetProvider>
