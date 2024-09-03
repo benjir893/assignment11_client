@@ -1,8 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Navlogo from "../../../navbar/Navlogo";
+import Navlogo from "../../navbar/Navlogo";
 import { HelmetProvider } from "react-helmet-async";
 import { useContext } from "react";
-import { Authcontext } from "../../../../services/AuthProvider";
+import { Authcontext } from "../../../services/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -25,6 +26,8 @@ const Login = () => {
             })
             .catch(err => {
                 console.error(err)
+                Swal.fire("please re-check your credentials")
+                return;
             })
     }
 

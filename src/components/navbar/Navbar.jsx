@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Subnav from "./Subnav";
 import Momentdisplay from "./Momentdisplay";
 import Navlogo from "./Navlogo";
@@ -10,11 +10,13 @@ const Navbar = () => {
     const { user,logOutUser} = useContext(Authcontext);
     const navigate = useNavigate()
     const navlinks = [
-        <li><Link>HOME</Link></li>,
-        <li><Link>QUERIES</Link></li>,
-        <li><Link>RECOMMENDET FOR ME</Link></li>,
-        <li><Link>MY QUERIES</Link></li>,
-        <li><Link>MY RECOMMENDATION</Link></li>
+        user?<><li><Link>HOME</Link></li>
+        <li><Link to={'/queries'}>QUERIES</Link></li>
+        <li><Link>RECOMMENDET FOR ME</Link></li>
+        <li><Link to={'/myqueries'}>MY QUERIES</Link></li>
+        <li><Link to={'/user'}>MY RECOMMENDATION</Link></li></>:<><li><Link>HOME</Link></li>
+        <li><Link>QUERIES</Link></li>
+        <li><Link>RECOMMENDET FOR ME</Link></li></>
 ]
 
 const handleLogout=()=>{
@@ -50,6 +52,7 @@ return (
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow font-semibold text-blue-700">
                         {navlinks}
+                        
                 </ul>
             </div>
             {/* <a className="btn btn-ghost text-xl font-bungee_Tint border border-solid border-red-800 mx-1">ProdX</a> */}
@@ -62,9 +65,9 @@ return (
             </ul>
         </div>
         <div className="navbar-end">
-            <Subnav></Subnav>
             {
                 user ?<>
+                <p>{user?.email}</p>
                 <button onClick={handleLogout} className="btn bg-emerald-200 text-blue-600">LOG OUT</button></>:<>
                 <Link to={'/login'}><button className="btn bg-emerald-200 text-blue-600">LOG IN</button></Link>
                 </>

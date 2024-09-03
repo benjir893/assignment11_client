@@ -4,6 +4,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { Authcontext } from "../../../services/AuthProvider";
+import axios from "axios";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
@@ -23,9 +25,10 @@ const Register = () => {
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
+        const photo = form.photo.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
-        const loggeduser = { name, email, password, confirmPassword };
+        const loggeduser = { name, email, password, confirmPassword, photo };
         console.log(loggeduser)
         if (password < 6) {
             Swal.fire('password must be minimum six digits')
@@ -48,13 +51,24 @@ const Register = () => {
         }
         createNewUser(email, password)
             .then(userCredential => {
-                const user = userCredential.user;
-                console.log(user)
-                Swal.fire("you registered successfully. Thank you!");
-                navigate(location?.state ? location?.state : '/');
+                const newuser = userCredential.user;
+                console.log(newuser)
+                const createdat = userCredential.user?.metadata?.creationTime;
+                const user = {name, email, password, photo, createdat}
+                
+                // const user = {newuser, createdat}
+                fetch('http://localhost:5000/users',{
+                    method:'POST',
+                    headers:{'content-type':'application/json'},
+                    body:JSON.stringify(user),
+                })
+                Swal.fire("new user added successfully")
+                navigate('/')
             })
             .catch(err => {
                 console.error(err);
+                Swal.fire("This email already exist. try with different email account..");
+                return;
             })
 
     }
@@ -76,6 +90,10 @@ const Register = () => {
                         <div className="form-control">
 
                             <input type="email" placeholder="email" name="email" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+
+                            <input type="text" placeholder="place photo url here" name="photo" className="input input-bordered" />
                         </div>
                         <div className="form-control">
 
