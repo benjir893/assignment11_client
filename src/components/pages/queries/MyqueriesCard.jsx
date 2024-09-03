@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
+import { FcViewDetails } from "react-icons/fc";
+import { MdDeleteOutline } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 
 const MyqueriesCard = ({ myquery, currentQueries, setCurrentQueries}) => {
     const {_id, ProductImage, QueryTitle, ProductName, BrandName, AlternationReason, DatePosted, UserInfo } = myquery
+
+    const handleDelete=(_id)=>{
+        console.log(_id)
+    }
     return (
         <div className="">
             <div className="card bg-base-100 shadow-xl ">
@@ -29,7 +36,11 @@ const MyqueriesCard = ({ myquery, currentQueries, setCurrentQueries}) => {
                     {/* <p>{UserInfo.image}</p> */}
 
                     <div className="card-actions">
-                        <Link to={`/myquerydetails/${_id}`}><button className="btn btn-primary bg-orange-600">Details</button></Link>
+                        <Link to={`/myquerydetails/${_id}`}><button className="btn hover:bg-orange-500 bg-lime-400 text-blue-800"><FcViewDetails /></button></Link>
+
+                        <Link to={`/myquerydetails/${_id}`}><button onClick={()=>handleDelete(_id)} className="btn hover:bg-orange-500 bg-lime-400 text-blue-800"><MdDeleteOutline /></button></Link>
+
+                        <Link to={`/myquerydetails/${_id}`}><button className="btn hover:bg-orange-500 bg-lime-400 text-blue-800"><FaEdit /></button></Link>
                     </div>
                 </div>
             </div>

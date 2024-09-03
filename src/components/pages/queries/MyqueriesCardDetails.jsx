@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 
 const MyqueriesCardDetails = () => {
@@ -30,7 +31,7 @@ const MyqueriesCardDetails = () => {
                     {/* <p>{UserInfo.image}</p> */}
 
                     <div className="card-actions">
-                        <Link to={-1}><button className="btn btn-primary bg-orange-600">back</button></Link>
+                        <Link to={'/myqueries'}><button className="btn hover:bg-orange-500 bg-lime-400 text-blue-800"><IoArrowBackCircleSharp /></button></Link>
                     </div>
                 </div>
             </div>
