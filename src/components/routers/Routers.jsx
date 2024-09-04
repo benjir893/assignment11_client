@@ -10,6 +10,8 @@ import Myqueries from "../pages/queries/Myqueries";
 import AddQuery from "../pages/queries/AddQuery";
 import PrivateRouters from "../../services/PrivateRouters";
 import MyqueriesCardDetails from "../pages/queries/MyqueriesCardDetails";
+import UpdateQuery from "../pages/queries/UpdateQuery";
+import Recomendations from "../pages/recomendations/Recomendations";
 
 export const router = createBrowserRouter([
     {
@@ -55,9 +57,18 @@ export const router = createBrowserRouter([
                 loader:({params})=>fetch(`http://localhost:5000/queryproduct/${params.id}`)
             },
             {
+                path:'/updatequery/:id',
+                element:<UpdateQuery></UpdateQuery>,
+                loader:({params})=>fetch(`http://localhost:5000/queryproduct/${params.id}`) 
+            },
+            {
                 path:'/addquery',
                 element:<PrivateRouters><AddQuery></AddQuery></PrivateRouters>
-            }
+            },
+            {
+                path:'/recomendation',
+                element:<Recomendations></Recomendations>
+            },
         ]
     }
 ])

@@ -12,9 +12,9 @@ const Navbar = () => {
     const navlinks = [
         user?<><li><Link>HOME</Link></li>
         <li><Link to={'/queries'}>QUERIES</Link></li>
-        <li><Link>RECOMMENDET FOR ME</Link></li>
+        <li><Link to={'/recomendation'}>RECOMMENDETIONS</Link></li>
         <li><Link to={'/myqueries'}>MY QUERIES</Link></li>
-        <li><Link to={'/user'}>MY RECOMMENDATION</Link></li></>:<><li><Link>HOME</Link></li>
+        <li><Link to={'/user'}>MY RECOMMENDATIONS</Link></li></>:<><li><Link>HOME</Link></li>
         <li><Link>QUERIES</Link></li>
         <li><Link>RECOMMENDET FOR ME</Link></li></>
 ]

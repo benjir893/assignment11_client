@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const AddQuery = () => {
     const { user } = useContext(Authcontext);
-    const { email } = user;
+    const { email } = user || {};
     // const [otherinfo, setOtherinfo] = useState([]);
     // fetch('http://localhost:5000/users')
     //     .then(res => res.json())
@@ -29,8 +29,8 @@ const AddQuery = () => {
         const AlternationReason = form.alterReason.value;
         const DatePosted = form.DatePosted.value;
         // const DatePosted = 
-        const UserInfo = {name, image};
-        const addquery = { ProductImage, QueryTitle, ProductName, BrandName, AlternationReason, UserInfo, DatePosted, email }
+        // const UserInfo = {name, image};
+        const addquery = { ProductImage, QueryTitle, ProductName, BrandName, AlternationReason, name, image, DatePosted, email }
         console.log(addquery)
 
         fetch('http://localhost:5000/queryproduct',{

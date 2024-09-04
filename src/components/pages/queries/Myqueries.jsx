@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { Authcontext } from "../../../services/AuthProvider";
 import MyqueriesCard from "./MyqueriesCard";
 import Subnav from "../../navbar/Subnav";
+import MyqueryBanner from "./MyqueryBanner";
 
 
 const Myqueries = () => {
@@ -13,9 +14,9 @@ const Myqueries = () => {
     const myqueries = currentQueries?.filter(user => user?.email === email)
     return (
         <div>
-            <h1 className="text-2xl font-bungee_Tint text-center mt-3">My Queris</h1>
+            <MyqueryBanner></MyqueryBanner>
             <div className="md:flex w-full">
-                <Link className=" mb-2 " to={'/addquery'}><button className="label-text-alt link link-hover text-xl font-semibold text-blue-700 font-roboto">Add new Query</button></Link>
+                <Link className="ml-10 mb-2 " to={'/addquery'}><button className="label-text-alt link link-hover text-xl font-semibold text-blue-700 font-roboto">Add new Query</button></Link>
                 
             </div>
             {/* <p>{myqueries?.length}</p> */}

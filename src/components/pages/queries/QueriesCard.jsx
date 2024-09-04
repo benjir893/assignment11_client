@@ -2,7 +2,7 @@ import Subnav from "../../navbar/Subnav";
 
 
 const QueriesCard = ({ productquery }) => {
-    const { ProductImage, QueryTitle, ProductName, BrandName, AlternationReason, DatePosted, UserInfo, email } = productquery;
+    const { ProductImage, QueryTitle, ProductName, BrandName, AlternationReason, DatePosted, name, image, email } = productquery;
     return (
         <div className="">
             <div className="card bg-base-100 shadow-xl ">
@@ -19,10 +19,10 @@ const QueriesCard = ({ productquery }) => {
                     <p>{AlternationReason}</p>
                     <p>{DatePosted}</p>
                     {/* <p>{email}</p> */}
-                    <p>{UserInfo.name}</p>
+                    <p>{name}</p>
                     <figure className="w-20 h-20 rounded-full">
                         <img
-                            src={UserInfo.image}
+                            src={image}
                             alt="User"
                             className="w-20 h-20 rounded-full" />
                     </figure>
