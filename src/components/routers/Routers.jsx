@@ -67,7 +67,8 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/recomendation',
-                element:<Recomendations></Recomendations>
+                element:<Recomendations></Recomendations>,
+                loader:()=>fetch('http://localhost:5000/recomendation')
             },
         ]
     }
