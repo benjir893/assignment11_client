@@ -12,6 +12,7 @@ import PrivateRouters from "../../services/PrivateRouters";
 import MyqueriesCardDetails from "../pages/queries/MyqueriesCardDetails";
 import UpdateQuery from "../pages/queries/UpdateQuery";
 import Recomendations from "../pages/recomendations/Recomendations";
+import RecomendationDetails from "../pages/recomendations/RecomendationDetails";
 
 export const router = createBrowserRouter([
     {
@@ -69,6 +70,11 @@ export const router = createBrowserRouter([
                 path:'/recomendation',
                 element:<Recomendations></Recomendations>,
                 loader:()=>fetch('http://localhost:5000/recomendation')
+            },
+            {
+                path:'/recomenddetails/:id',
+                element:<RecomendationDetails></RecomendationDetails>,
+                loader:({params})=>fetch(`http://localhost:5000/recomendation/${params.id}`)
             },
         ]
     }
