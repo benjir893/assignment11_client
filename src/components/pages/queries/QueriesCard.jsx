@@ -27,7 +27,7 @@ const QueriesCard = ({ productquery }) => {
                             className="w-20 h-20 rounded-full" />
                     </figure>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button className="btn  hover:bg-orange-500 bg-lime-400 text-blue-800">More Details</button>
                     </div>
                 </div>
             </div>
