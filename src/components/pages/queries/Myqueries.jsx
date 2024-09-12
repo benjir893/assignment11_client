@@ -4,6 +4,8 @@ import { Authcontext } from "../../../services/AuthProvider";
 import MyqueriesCard from "./MyqueriesCard";
 import Subnav from "../../navbar/Subnav";
 import MyqueryBanner from "./MyqueryBanner";
+import Navbar from "../../navbar/Navbar";
+import Footer from "../../footer/Footer";
 
 
 const Myqueries = () => {
@@ -14,6 +16,7 @@ const Myqueries = () => {
     const myqueries = currentQueries?.filter(user => user?.email === email)
     return (
         <div>
+            <Navbar></Navbar>
             <MyqueryBanner></MyqueryBanner>
             <div className="md:flex w-full">
                 <Link className="ml-10 mb-2 " to={'/addquery'}><button className="label-text-alt link link-hover text-xl font-semibold text-blue-700 font-roboto">Add new Query</button></Link>
@@ -27,6 +30,7 @@ const Myqueries = () => {
                     
                 }
             </div>
+            <Footer></Footer>
         </div>
     );
 };

@@ -63,7 +63,7 @@ const Register = () => {
                     body:JSON.stringify(user),
                 })
                 Swal.fire("new user added successfully")
-                navigate('/')
+                navigate(location?.state ? location?.state :'/')
             })
             .catch(err => {
                 console.error(err);
@@ -74,11 +74,11 @@ const Register = () => {
     }
     return (
 
-        <div className="hero bg-base-200 min-h-screen">
+        <div className="hero bg-lime-50 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                 </div>
-                <div className="card bg-emerald-200 w-full max-w-sm shrink-0 shadow-2xl">
+                <div className="card bg-lime-400 w-full max-w-sm shrink-0 shadow-2xl">
                     <div className="ml-24 mt-5">
                         <Navlogo></Navlogo>
                     </div>
@@ -109,7 +109,7 @@ const Register = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary bg-emerald-500 text-xl">REGISTER</button>
+                            <button className="btn btn-primary bg-lime-700 hover:bg-lime-600 text-xl">REGISTER</button>
                         </div>
                     </form>
                 </div>

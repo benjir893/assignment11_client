@@ -13,6 +13,8 @@ import MyqueriesCardDetails from "../pages/queries/MyqueriesCardDetails";
 import UpdateQuery from "../pages/queries/UpdateQuery";
 import Recomendations from "../pages/recomendations/Recomendations";
 import RecomendationDetails from "../pages/recomendations/RecomendationDetails";
+import Myrecomendations from "../pages/recomendations/Myrecomendations";
+import AddMyrecomendation from "../pages/recomendations/AddMyrecomendation";
 
 export const router = createBrowserRouter([
     {
@@ -76,6 +78,15 @@ export const router = createBrowserRouter([
                 element:<RecomendationDetails></RecomendationDetails>,
                 loader:({params})=>fetch(`http://localhost:5000/recomendation/${params.id}`)
             },
+            {
+                path:'/myrecomendation',
+                element:<Myrecomendations></Myrecomendations>,
+                loader:()=>fetch('http://localhost:5000/recomendation')
+            },
+            {
+                path:'/addmyrecomendation',
+                element:<AddMyrecomendation></AddMyrecomendation>
+            }
         ]
     }
 ])
