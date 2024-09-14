@@ -42,7 +42,7 @@ const MyqueriesCard = ({ myquery, currentQueries, setCurrentQueries}) => {
     }
     return (
         <div className="">
-            <div className="card bg-base-100 shadow-xl ">
+            <div className="card bg-base-100 shadow-xl min-h-full ">
                 <figure className="px-10 pt-10">
                     <img
                         src={ProductImage}
@@ -66,11 +66,11 @@ const MyqueriesCard = ({ myquery, currentQueries, setCurrentQueries}) => {
                     {/* <p>{UserInfo.image}</p> */}
 
                     <div className="card-actions">
-                        <Link to={`/myquerydetails/${_id}`}><button className="btn hover:bg-orange-500 bg-lime-400 text-blue-800"><FcViewDetails /></button></Link>
+                        <Link to={`/myquerydetails/${_id}`}><button className="btn hover:bg-lime-300 bg-lime-500 text-blue-800"><FcViewDetails /></button></Link>
 
-                        <Link><button onClick={()=>handleDelete(_id)} className="btn hover:bg-orange-500 bg-lime-400 text-blue-800"><MdDeleteOutline /></button></Link>
+                        <Link><button onClick={()=>handleDelete(_id)} className="btn hover:bg-lime-300 bg-lime-500 text-blue-800"><MdDeleteOutline /></button></Link>
 
-                        <Link to={`/updatequery/${_id}`}><button className="btn hover:bg-orange-500 bg-lime-400 text-blue-800"><FaEdit /></button></Link>
+                        <Link to={`/updatequery/${_id}`}><button className="btn hover:bg-lime-300 bg-lime-500 text-blue-800"><FaEdit /></button></Link>
                     </div>
                 </div>
             </div>

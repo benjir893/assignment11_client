@@ -15,6 +15,7 @@ import Recomendations from "../pages/recomendations/Recomendations";
 import RecomendationDetails from "../pages/recomendations/RecomendationDetails";
 import Myrecomendations from "../pages/recomendations/Myrecomendations";
 import AddMyrecomendation from "../pages/recomendations/AddMyrecomendation";
+import Addblog from "../pages/blogs/Addblog";
 
 export const router = createBrowserRouter([
     {
@@ -56,12 +57,12 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/myquerydetails/:id',
-                element:<MyqueriesCardDetails></MyqueriesCardDetails>,
+                element:<PrivateRouters><MyqueriesCardDetails></MyqueriesCardDetails></PrivateRouters>,
                 loader:({params})=>fetch(`http://localhost:5000/queryproduct/${params.id}`)
             },
             {
                 path:'/updatequery/:id',
-                element:<UpdateQuery></UpdateQuery>,
+                element:<PrivateRouters><UpdateQuery></UpdateQuery></PrivateRouters>,
                 loader:({params})=>fetch(`http://localhost:5000/queryproduct/${params.id}`) 
             },
             {
@@ -75,18 +76,27 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/recomenddetails/:id',
-                element:<RecomendationDetails></RecomendationDetails>,
+                element:<PrivateRouters><RecomendationDetails></RecomendationDetails></PrivateRouters>,
                 loader:({params})=>fetch(`http://localhost:5000/recomendation/${params.id}`)
             },
             {
                 path:'/myrecomendation',
-                element:<Myrecomendations></Myrecomendations>,
+                element:<PrivateRouters><Myrecomendations></Myrecomendations></PrivateRouters>,
                 loader:()=>fetch('http://localhost:5000/recomendation')
             },
             {
                 path:'/addmyrecomendation',
-                element:<AddMyrecomendation></AddMyrecomendation>
+                element:<PrivateRouters><AddMyrecomendation></AddMyrecomendation></PrivateRouters>
+            },
+            {
+                path:'/addblog',
+                element:<PrivateRouters><Addblog></Addblog></PrivateRouters>
             }
+            // {
+            //     path:'/blogs',
+            //     element:<Blogs></Blogs>,
+            //     loader:()=>fetch('http://localhost:5000/blogs')
+            // }
         ]
     }
 ])

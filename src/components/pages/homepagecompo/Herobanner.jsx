@@ -1,9 +1,17 @@
+import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
 
 
 const Herobanner = () => {
     return (
         <div className="mx-4">
+            <div className="flex my-4">
+                <button className="btn btn-outline text-lime-600 hover:bg-lime-300 text-lg font-roboto">Latest Update:</button>
+                <Marquee speed={100} pauseOnHover={true} direction="left" className=" text-lime-500 font-roboto text-lg w-20">
+                    <Link className="mr-4 link link-hover" to={'/queries'}>Contact us for any on going query status...</Link>
+                    <Link className="link link-hover" to={'/recomendation'}>Check out all recommendations...</Link>
+                </Marquee>
+            </div>
             <div className="carousel w-full h-auto my-4 rounded-lg">
                 <div id="slide1" className="carousel-item relative w-full">
                     {/* <img

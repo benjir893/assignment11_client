@@ -18,7 +18,7 @@ const Myrecomendations = () => {
         <div>
             <Navbar></Navbar>
             <div className="my-2 ml-2">
-                <Link to={'/addmyrecomendation'}><button className="btn hover:bg-orange-500 bg-lime-400 text-blue-800">Add New Recommendation</button></Link>
+                <Link to={'/addmyrecomendation'}><button className="btn hover:bg-lime-300 bg-lime-500 text-blue-800">Add New Recommendation</button></Link>
             </div>
             <div className="overflow-x-auto">
                 <table className="table">

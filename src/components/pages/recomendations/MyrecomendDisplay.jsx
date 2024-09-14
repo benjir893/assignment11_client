@@ -4,8 +4,8 @@ import Swal from "sweetalert2";
 const MyrecomendDisplay = ({ myrecomend, myrecomended, setMyrecomended }) => {
     const { _id, recommendedProductImage, recommendedProductName, recommendationTitle, productName, userEmail, recommenderEmail, currentTimeStamp } = myrecomend;
 
-    const handledelet = (_id) => {
-        console.log(_id)
+    const handledelet = (id) => {
+        console.log(id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -15,8 +15,9 @@ const MyrecomendDisplay = ({ myrecomend, myrecomended, setMyrecomended }) => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
+            console.log(result)
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/recomendation/${_id}`, {
+                fetch(`http://localhost:5000/recomendation/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -27,7 +28,7 @@ const MyrecomendDisplay = ({ myrecomend, myrecomended, setMyrecomended }) => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            const remaining = myrecomended?.filter(remainingdata => remainingdata._id !== _id)
+                            const remaining = myrecomended?.filter(remainingdata => remainingdata._id !== id)
                             setMyrecomended(remaining)
                         }
                     })

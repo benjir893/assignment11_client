@@ -36,7 +36,7 @@ const AddMyrecomendation = () => {
                 console.log(data)
                 if (data.insertedId) {
                     Swal.fire("your data has been saved");
-                      navigate('/myrecomendation');
+                    navigate('/myrecomendation');
 
                 }
             })
@@ -127,9 +127,10 @@ const AddMyrecomendation = () => {
                                 <input type="date" placeholder="select date please" name="currentTimeStamp" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn bg-lime-500 text-blue-700 text-2xl font-roboto">Submit Query</button>
+                                <button className="btn bg-lime-500 text-blue-700 text-2xl font-roboto hover:bg-lime-300">Submit Query</button>
                             </div>
                         </form>
+                        <Link className="mx-auto" to={'/myrecomendation'}><button className="btn bg-lime-500 text-blue-700 text-2xl font-roboto hover:bg-lime-300">Cancel</button></Link>
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@ const Myqueries = () => {
             <div className="md:grid grid-cols-2 gap-2">
                 {
                     myqueries ?<>{myqueries?.map(myquery => <MyqueriesCard key={myquery._id} myquery={myquery} currentQueries={currentQueries} setCurrentQueries={setCurrentQueries}></MyqueriesCard>)}
-                    </>:<p className="text-2xl text-orange-500 font-roboto">No query found</p>
+                    </>:<p className="text-2xl text-lime-700 font-roboto">No query found</p>
                     
                 }
             </div>

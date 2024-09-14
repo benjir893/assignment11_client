@@ -5,7 +5,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Footer = () => {
     return (
-        <div>
+        <div className="mt-10">
             <footer className=" footer bg-lime-200 text-blue-800 font-roboto font-semibold p-10 ">
                 <nav className="ml-10" >
                     <h6 className="footer-title">Services</h6>

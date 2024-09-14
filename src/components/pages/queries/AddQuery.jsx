@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Authcontext } from "../../../services/AuthProvider";
 import { data } from "autoprefixer";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const AddQuery = () => {
@@ -113,9 +114,10 @@ const AddQuery = () => {
 
                         </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary bg-green-300 text-blue-700 text-2xl font-roboto">Add</button>
+                        <button className="btn btn-primary bg-lime-500 text-blue-700 text-2xl font-roboto  hover:bg-lime-400">Add</button>
                     </div>
                 </form>
+                <Link className="mx-auto" to={'/queries'}><button className="btn btn-primary bg-lime-500 text-blue-700 text-2xl font-roboto hover:bg-lime-400">cancel</button></Link>
             </div>
         </div>
     );

@@ -15,7 +15,8 @@ const Navbar = () => {
             <li><Link to={'/queries'}>QUERIES</Link></li>
             <li><Link to={'/recomendation'}>RECOMMENDETIONS</Link></li>
             <li><Link to={'/myqueries'}>MY QUERIES</Link></li>
-            <li><Link to={'/myrecomendation'}>MY RECOMMENDATIONS</Link></li></>,
+            <li><Link to={'/myrecomendation'}>MY RECOMMENDATIONS</Link></li>
+            <li><Link to={'/addblog'}>BLOG</Link></li></>,
         
         
             !user && <><li><Link to={'/'}>HOME</Link></li>
@@ -30,7 +31,7 @@ const Navbar = () => {
         logOutUser()
             .then(() => {
                 console.log('user logged out')
-                navigate('/login')
+                navigate('/')
             })
             .catch(error => {
                 console.error(error)
@@ -74,9 +75,9 @@ const Navbar = () => {
             <div className="navbar-end">
                 {
                     user ? <>
-                        <p>{user?.email}</p>
-                        <button onClick={handleLogout} className="btn bg-emerald-200 text-blue-600">LOG OUT</button></> : <>
-                        <Link to={'/login'}><button className="btn bg-emerald-200 text-blue-600">LOG IN</button></Link>
+                        <p className="px-3 text-blue-500 font-semibold font-roboto">{user?.email}</p>
+                        <button onClick={handleLogout} className="btn bg-emerald-500 text-blue-600 hover:bg-lime-200">LOG OUT</button></> : <>
+                        <Link to={'/login'}><button className="btn bg-emerald-500 text-blue-600 hover:bg-lime-200">LOG IN</button></Link>
                     </>
                 }
 

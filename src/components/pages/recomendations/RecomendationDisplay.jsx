@@ -6,7 +6,7 @@ const RecomendationDisplay = ({ recomend }) => {
     console.log(_id)
     return (
         <div className="my-10">
-            <div className="card card-compact bg-base-100 w-96 shadow-xl">
+            <div className="card card-compact bg-base-100 w-96 shadow-xl min-h-full">
                 <figure>
                     <img
                         src={recommendedProductImage}

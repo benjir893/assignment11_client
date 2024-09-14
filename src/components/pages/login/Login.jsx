@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navlogo from "../../navbar/Navlogo";
 import { HelmetProvider } from "react-helmet-async";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Authcontext } from "../../../services/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -10,6 +10,7 @@ const Login = () => {
     const { user, loginUser, googleLogin, githubLogin } = useContext(Authcontext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [showpass, setShowpass] = useState(false)
 
     const handleLoginWithEmailandPassword = e => {
         e.preventDefault();
@@ -76,7 +77,7 @@ const Login = () => {
 
                             <div className="form-control">
 
-                                <input type="password" placeholder=" password" name="password" className="input input-bordered" required />
+                                <input type={showpass?"text":"password"} placeholder=" password" name="password" className="input input-bordered" required /><span></span>
                                 <label className="label">
                                     <Link to={'/register'} className="text-black">Yet to<span className="label-text-alt link link-hover text-blue-800 font-semibold text-xl"> register</span> ?</Link>
                                     {/* <a href="#" className="label-text-alt link link-hover">Yet to register?</a> */}
@@ -84,6 +85,7 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary bg-lime-700 hover:bg-lime-600 text-xl">Login</button>
+                                <Link className="link link-hover" to={'/'}>Back to home page</Link>
                             </div>
                         </form>
                         <div className="p-2 mx-auto">
