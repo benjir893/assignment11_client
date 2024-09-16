@@ -26,7 +26,7 @@ const Footer = () => {
             </footer>
             <footer className="footer bg-lime-200 text-blue-800 font-roboto font-semibold border-base-300 border-t px-10 py-4">
                 <aside className="grid-flow-col items-center">
-                    <img className="w-16 h-16 rounded-full" src="https://i.ibb.co/rvsWpfQ/prod-Xlogo.webp" alt="logo" />
+                   <Link to={'/'}><img className="w-16 h-16 rounded-full" src="https://i.ibb.co/rvsWpfQ/prod-Xlogo.webp" alt="logo" /></Link>
                     <p>
                         ProdX Services Ltd.
                         <br />

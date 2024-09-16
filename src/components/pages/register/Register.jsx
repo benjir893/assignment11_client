@@ -1,17 +1,21 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navlogo from "../../navbar/Navlogo";
 import { HelmetProvider } from "react-helmet-async";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { Authcontext } from "../../../services/AuthProvider";
 import axios from "axios";
 import { updateProfile } from "firebase/auth";
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 
 const Register = () => {
     const { user, createNewUser } = useContext(Authcontext);
     const navigate = useNavigate();
-    const location = useLocation()
+    const location = useLocation();
+    const [showpass, setShowpass] = useState(false)
+    const [confirmshowpass, setConfirmShowpass] = useState(false)
 
     const handleRegistration = (e) => {
         e.preventDefault();
@@ -97,13 +101,21 @@ const Register = () => {
                         </div>
                         <div className="form-control">
 
-                            <input type="password" placeholder="password" name="password" className="input input-bordered" required />
+                            <input type={showpass?"text":"password"} placeholder="password" name="password" className="input input-bordered" required /><span className="ml-64 -mt-8" onClick={()=>setShowpass(!showpass)}>
+                                {
+                                    showpass?<FaRegEyeSlash />:<FaRegEye />
+                                }
+                            </span>
 
                         </div>
-                        <div className="form-control">
+                        <div className="form-control mt-4">
 
-                            <input type="password" placeholder="confirm password" name="confirmPassword" className="input input-bordered" required />
-                            <label className="label">
+                            <input type={confirmshowpass?"text":"password"} placeholder="confirm password" name="confirmPassword" className="input input-bordered" required /><span className="ml-64 -mt-8" onClick={()=>setConfirmShowpass(!confirmshowpass)}>
+                                {
+                                    confirmshowpass?<FaRegEyeSlash />:<FaRegEye />
+                                }
+                            </span>
+                            <label className="label mt-2">
                                 <Link to={'/login'} className="text-black">Already registered ?<span className="label-text-alt link link-hover text-blue-800 font-semibold text-xl"> Log In</span> ?</Link>
 
                             </label>

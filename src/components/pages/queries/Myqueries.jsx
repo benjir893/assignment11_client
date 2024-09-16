@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { Authcontext } from "../../../services/AuthProvider";
 import MyqueriesCard from "./MyqueriesCard";
@@ -6,14 +6,25 @@ import Subnav from "../../navbar/Subnav";
 import MyqueryBanner from "./MyqueryBanner";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
+import { data } from "autoprefixer";
+import axios from "axios";
 
 
 const Myqueries = () => {
     const { user } = useContext(Authcontext)
     const { email } = user || {};
-    const queries = useLoaderData();
-    const [currentQueries, setCurrentQueries] = useState(queries)
-    const myqueries = currentQueries?.filter(user => user?.email === email)
+    // const queries = useLoaderData();
+    const [currentQueries, setCurrentQueries] = useState([])
+    const url = `http://localhost:5000/queryproduct?email=${user?.email}`
+
+    useEffect(()=>{
+        axios.get(url, {withCredentials:true})
+        .then(res =>{ setCurrentQueries(res.data)})
+        // fetch(url)
+        // .then(res => res.json())
+        
+    },[])
+    // const myqueries = currentQueries?.filter(user => user?.email === email)
     return (
         <div>
             <Navbar></Navbar>
@@ -25,8 +36,8 @@ const Myqueries = () => {
             {/* <p>{myqueries?.length}</p> */}
             <div className="md:grid grid-cols-2 gap-2">
                 {
-                    myqueries ?<>{myqueries?.map(myquery => <MyqueriesCard key={myquery._id} myquery={myquery} currentQueries={currentQueries} setCurrentQueries={setCurrentQueries}></MyqueriesCard>)}
-                    </>:<p className="text-2xl text-lime-700 font-roboto">No query found</p>
+                    currentQueries?.map(myquery => <MyqueriesCard key={myquery._id} myquery={myquery} currentQueries={currentQueries} setCurrentQueries={setCurrentQueries}></MyqueriesCard>)
+                    
                     
                 }
             </div>

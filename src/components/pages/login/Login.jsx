@@ -4,6 +4,9 @@ import { HelmetProvider } from "react-helmet-async";
 import { useContext, useState } from "react";
 import { Authcontext } from "../../../services/AuthProvider";
 import Swal from "sweetalert2";
+import { FaRegEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa6";
+import axios from "axios";
 
 
 const Login = () => {
@@ -17,13 +20,23 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { email, password }
-        console.log({ user })
+        // const user = { email, password }
+        // console.log({ user })
 
         loginUser(email, password)
             .then(useCredential => {
-                console.log(useCredential.user)
-                navigate(location?.state ? location?.state : '/')
+                const loggeduser = useCredential.user;
+                console.log(loggeduser)
+                const user = { email }
+
+                // get access token
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.success) {
+                            navigate(location?.state ? location?.state : '/');
+                        }
+                    })
             })
             .catch(err => {
                 console.error(err)
@@ -50,7 +63,7 @@ const Login = () => {
         githubLogin()
             .then(userCredential => {
                 console.log(userCredential.user);
-                navigate(location?.state ? location?.state : '/')
+                navigate(location?.state ? location?.state : '/');
             })
             .catch(err => {
                 console.error(err)
@@ -77,7 +90,7 @@ const Login = () => {
 
                             <div className="form-control">
 
-                                <input type={showpass?"text":"password"} placeholder=" password" name="password" className="input input-bordered" required /><span></span>
+                                <input type={showpass ? "text" : "password"} placeholder=" password" name="password" className="input input-bordered" required /><span className="-mt-8 ml-60" onClick={() => setShowpass(!showpass)}>{showpass ? <FaRegEyeSlash /> : <FaRegEye />}</span>
                                 <label className="label">
                                     <Link to={'/register'} className="text-black">Yet to<span className="label-text-alt link link-hover text-blue-800 font-semibold text-xl"> register</span> ?</Link>
                                     {/* <a href="#" className="label-text-alt link link-hover">Yet to register?</a> */}

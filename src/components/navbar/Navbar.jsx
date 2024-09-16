@@ -76,8 +76,8 @@ const Navbar = () => {
                 {
                     user ? <>
                         <p className="px-3 text-blue-500 font-semibold font-roboto">{user?.email}</p>
-                        <button onClick={handleLogout} className="btn bg-emerald-500 text-blue-600 hover:bg-lime-200">LOG OUT</button></> : <>
-                        <Link to={'/login'}><button className="btn bg-emerald-500 text-blue-600 hover:bg-lime-200">LOG IN</button></Link>
+                        <button onClick={handleLogout} className="btn bg-lime-400 text-blue-600 hover:bg-lime-300">LOG OUT</button></> : <>
+                        <Link to={'/login'}><button className="btn bg-lime-400 text-blue-600 hover:bg-lime-300">LOG IN</button></Link>
                     </>
                 }
 

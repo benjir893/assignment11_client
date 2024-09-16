@@ -1,17 +1,23 @@
 import { Link, useLoaderData } from "react-router-dom";
 import MyrecomendDisplay from "./MyrecomendDisplay";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Authcontext } from "../../../services/AuthProvider";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
+import axios from "axios";
 
 
 const Myrecomendations = () => {
     const { user } = useContext(Authcontext)
     const { email } = user || {}
-    const myrecomendations = useLoaderData();
-    const [myrecomended, setMyrecomended] = useState(myrecomendations)
-    const selectMyrecomends = myrecomended?.filter(user => user?.recommenderEmail === email)
+    // const myrecomendations = useLoaderData();
+    const [myrecomended, setMyrecomended] = useState([])
+    const url = `http://localhost:5000/recomendation?email=${user?.email}`
+    useEffect(()=>{
+        axios.get(url, {withCredentials:true})
+        .then(res =>{setMyrecomended(res.data)})
+    },[])
+    // const selectMyrecomends = myrecomended?.filter(user => user?.recommenderEmail === email)
 
 
     return (
@@ -36,7 +42,7 @@ const Myrecomendations = () => {
                     </thead>
                     <tbody>
                         {
-                            selectMyrecomends?.map(myrecomend => <MyrecomendDisplay key={myrecomend._id} myrecomend={myrecomend} myrecomended={myrecomended} setMyrecomended={setMyrecomended}></MyrecomendDisplay>)
+                           myrecomended?.map(myrecomend => <MyrecomendDisplay key={myrecomend._id} myrecomend={myrecomend} myrecomended={myrecomended} setMyrecomended={setMyrecomended}></MyrecomendDisplay>)
                         }
                     </tbody>
 
